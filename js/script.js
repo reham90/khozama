@@ -40,7 +40,7 @@ $(document).ready(function () {
 
   //fixed nav
   $stickyNav = $(".top-header");
-  $(window).on("scroll load", function () {
+  $(window).scroll("scroll load", function () {
     var scroll = $(window).scrollTop();
     if (scroll >= 200) {
       $stickyNav.addClass("fixed-nav", 500);
@@ -53,7 +53,7 @@ $(document).ready(function () {
   });
   var $stickyheader = $("header");
   lastScroll = 0;
-  $(window).on("scroll load", function () {
+  $(window).scroll("scroll load", function () {
     var scroll = $(window).scrollTop();
     if (lastScroll - scroll > 0) {
       $stickyheader.addClass("fixed-header", { duration: 1000 });
@@ -168,12 +168,15 @@ var screen = new Swiper(".news-section .swiper-container", {
   $(".nav-foot-header").addClass("footer-accordion");
   $(".nav-foot").addClass("footer-panel");
 }
+
 $(".footer-accordion").click(function () {
-  var x = $(this).siblings().prop("scrollHeight") + 15 + "px";
+  
+ 
+  
   $(".footer-accordion").not(this).removeClass("active");
   $(this).toggleClass("active");
   if ($(this).siblings().css("max-height") == "0px") {
-    $(this).siblings().css("max-height", x);
+    $(this).siblings().css("max-height", "200px");
     $(this).siblings(".nav-foot").css("padding-top", "15px");
   } else {
     $(this).siblings().css("max-height", "0");
@@ -204,4 +207,28 @@ $(window).scroll(function () {
     ? $(".arrow-top").fadeIn(300)
     : $(".arrow-top").fadeOut(300);
 });
+});
+
+////////////////////////////////////// fancybox  /////////////////////////////////////////
+$('[data-fancybox]').fancybox({
+  // Options will go here
+  buttons: [
+    "slideShow",
+    "thumbs",
+    "zoom",
+    "fullScreen",
+    "share",
+    "close"
+  ],
+  wheel : false,
+  transitionEffect: "slide",
+   // thumbs          : false,
+  // hash            : false,
+  loop            : true,
+  // keyboard        : true,
+  toolbar         : false,
+  // animationEffect : false,
+  // arrows          : true,
+  clickContent    : false,
+  protect: true
 });
